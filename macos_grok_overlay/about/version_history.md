@@ -16,3 +16,4 @@
 | 0.0.42<br>June 2026 | Grok Build initial window layout fix; terminal <br> fills window on first open. |
 | 0.0.43<br>June 2026 | Prominent upstream and fork attribution <br> (ATTRIBUTION.md, in-app menus, LICENSE notice). |
 | 0.0.44<br>June 2026 | External links open in the default browser <br> instead of tiny in-app popup windows. |
+| 0.0.45<br>June 2026 | Overlay window remembers size and position <br> after hiding to the menu bar and reopening. |

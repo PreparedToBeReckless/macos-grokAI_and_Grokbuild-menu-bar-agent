@@ -201,6 +201,8 @@ class AppDelegate(NSObject):
         self.window.setTitlebarAppearsTransparent_(True)
         self.window.setTitleVisibility_(NSWindowTitleHidden)
         self.window.setFrameAutosaveName_(FRAME_SAVE_NAME)
+        if not self.window.setFrameUsingName_(FRAME_SAVE_NAME):
+            self._position_window_near_clock()
 
         config = WKWebViewConfiguration.alloc().init()
         config.preferences().setJavaScriptCanOpenWindowsAutomatically_(True)
@@ -410,8 +412,6 @@ class AppDelegate(NSObject):
         self.toggleCompactGrokWindow_(sender)
 
     def showCompactGrokWindow_(self, sender=None):
-        if not self.window.isVisible():
-            self._position_window_near_clock()
         self.showWindow_(None)
 
     def toggleCompactGrokWindow_(self, sender=None):
