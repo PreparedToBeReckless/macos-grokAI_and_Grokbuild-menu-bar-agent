@@ -1,6 +1,11 @@
 import AppKit
 
 enum AppMenu {
+    private static let copyAction = Selector("copy:")
+    private static let pasteAction = Selector("paste:")
+    private static let selectAllAction = Selector("selectAll:")
+    private static let startDictationAction = Selector("startDictation:")
+
     static func install(on appDelegate: AppDelegate) {
         let mainMenu = NSMenu()
 
@@ -25,6 +30,38 @@ enum AppMenu {
             target: appDelegate
         )
 
+        let editMenuItem = NSMenuItem()
+        mainMenu.addItem(editMenuItem)
+
+        let editMenu = NSMenu(title: "Edit")
+        editMenuItem.submenu = editMenu
+        editMenu.addResponderItem(
+            withTitle: "Copy",
+            action: copyAction,
+            keyEquivalent: "c"
+        )
+        editMenu.addResponderItem(
+            withTitle: "Paste",
+            action: pasteAction,
+            keyEquivalent: "v"
+        )
+        editMenu.addResponderItem(
+            withTitle: "Paste and Match Style",
+            action: #selector(GrokTerminalView.pasteAsPlainText(_:)),
+            keyEquivalent: "V"
+        )
+        editMenu.addResponderItem(
+            withTitle: "Select All",
+            action: selectAllAction,
+            keyEquivalent: "a"
+        )
+        editMenu.addItem(.separator())
+        editMenu.addResponderItem(
+            withTitle: "Start Dictation",
+            action: startDictationAction,
+            keyEquivalent: ""
+        )
+
         NSApp.mainMenu = mainMenu
     }
 }
@@ -39,6 +76,18 @@ private extension NSMenu {
     ) -> NSMenuItem {
         let item = NSMenuItem(title: title, action: action, keyEquivalent: keyEquivalent)
         item.target = target ?? NSApp
+        addItem(item)
+        return item
+    }
+
+    @discardableResult
+    func addResponderItem(
+        withTitle title: String,
+        action: Selector,
+        keyEquivalent: String
+    ) -> NSMenuItem {
+        let item = NSMenuItem(title: title, action: action, keyEquivalent: keyEquivalent)
+        item.target = nil
         addItem(item)
         return item
     }

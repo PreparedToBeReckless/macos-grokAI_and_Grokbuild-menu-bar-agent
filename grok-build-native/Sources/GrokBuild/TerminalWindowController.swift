@@ -2,14 +2,14 @@ import AppKit
 
 final class TerminalWindowController: NSWindowController, NSWindowDelegate, LocalProcessTerminalViewDelegate {
     private let containerView = NSView()
-    private let terminalView: LocalProcessTerminalView
+    private let terminalView: GrokTerminalView
     private let agentPath: String
     private let workDir: String
 
     init(agentPath: String, workDir: String) {
         self.agentPath = agentPath
         self.workDir = workDir
-        self.terminalView = LocalProcessTerminalView(frame: .zero)
+        self.terminalView = GrokTerminalView(frame: .zero)
 
         let screenFrame = NSScreen.main?.visibleFrame ?? NSRect(x: 0, y: 0, width: 960, height: 640)
         let width = min(960, screenFrame.width * 0.7)
@@ -57,11 +57,17 @@ final class TerminalWindowController: NSWindowController, NSWindowDelegate, Loca
         guard let window else { return }
         window.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
+        focusTerminal()
         refreshTerminalLayout()
         DispatchQueue.main.async { [weak self] in
             self?.refreshTerminalLayout()
+            self?.focusTerminal()
             self?.launchAgentWhenReady()
         }
+    }
+
+    private func focusTerminal() {
+        window?.makeFirstResponder(terminalView)
     }
 
     private var launchedAgent = false
@@ -96,6 +102,7 @@ final class TerminalWindowController: NSWindowController, NSWindowDelegate, Loca
     }
 
     func windowDidBecomeKey(_ notification: Notification) {
+        focusTerminal()
         refreshTerminalLayout()
     }
 
