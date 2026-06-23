@@ -22,3 +22,4 @@
 | 0.0.48<br>June 2026 | Grok Overlay file-upload button opens the <br> system picker; Grok Build scroll speed tuned. |
 | 0.0.49<br>June 2026 | Grok Build custom app icon (Grok logo). |
 | 0.0.50<br>June 2026 | Grok Build icon fix — place icns in <br> Contents/Resources (Finder/DMG display). |
+| 0.0.51<br>June 2026 | Grok Build final square app icon. |
