@@ -29,10 +29,10 @@ A simple macOS overlay application for pinning <code>grok.com</code> to a dedica
 
   **Use the release DMG for this fork** — it includes **Grok Overlay** and **Grok Build**.
 
-**Download:** [Grok-Overlay-0.0.43.dmg](https://github.com/PreparedToBeReckless/macos-grok-overlay-reckless-fork/releases/latest)  
+**Download:** [Grok-Overlay-0.0.51.dmg](https://github.com/PreparedToBeReckless/macos-grok-overlay/releases/latest)  
 Open the DMG and drag both apps to Applications.
 
-[![DMG Installer](images/dmg-installer-preview.png)](https://github.com/PreparedToBeReckless/macos-grok-overlay-reckless-fork/releases/latest)
+[![DMG Installer](images/dmg-installer-preview.png)](https://github.com/PreparedToBeReckless/macos-grok-overlay/releases/latest)
 
 **Compatibility:** Release builds target `arm64` (Apple Silicon). Intel Macs can try building from source with `PY2APP_ARCH=x86_64 zsh build-dmg.sh`.
 
@@ -42,7 +42,7 @@ Open the DMG and drag both apps to Applications.
   To install **this fork** from source via pip (Python/CLI only — no `.app` bundles):
 
 ```bash
-python3 -m pip install "git+https://github.com/PreparedToBeReckless/macos-grok-overlay-reckless-fork.git"
+python3 -m pip install "git+https://github.com/PreparedToBeReckless/macos-grok-overlay.git"
 ```
 
   After a DMG or pip install, you can enable autolaunch from Terminal with:

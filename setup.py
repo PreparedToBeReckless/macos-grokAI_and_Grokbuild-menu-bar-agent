@@ -24,7 +24,7 @@ def read(f_name, empty_lines=False):
 source_page = "grok"
 package_name = f"macos-{source_page}-overlay"
 package_about = os.path.join(os.path.dirname(os.path.abspath(__file__)), package_name.replace("-","_"), "about")
-FORK_GITHUB_REPO = "PreparedToBeReckless/macos-grok-overlay-reckless-fork"
+FORK_GITHUB_REPO = "PreparedToBeReckless/macos-grok-overlay"
 
 
 if __name__ == "__main__":
