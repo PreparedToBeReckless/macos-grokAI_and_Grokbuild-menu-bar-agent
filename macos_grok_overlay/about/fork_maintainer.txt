@@ -1,3 +1,4 @@
 reckless
 Fork maintained using Grok (xAI) — no manual coding by reckless.
-See ATTRIBUTION.md and https://github.com/tchlux/macos-grok-overlay
+This fork: https://github.com/PreparedToBeReckless/macos-grokAI_and_Grokbuild-menuebar-agent
+Upstream: https://github.com/tchlux/macos-grok-overlay

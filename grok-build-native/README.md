@@ -1,6 +1,7 @@
 # Grok Build (native)
 
 > **Fork of [macos-grok-overlay](https://github.com/tchlux/macos-grok-overlay) by Thomas C.H. Lux.**  
+> **This fork:** [macos-grokAI_and_Grokbuild-menuebar-agent](https://github.com/PreparedToBeReckless/macos-grokAI_and_Grokbuild-menuebar-agent)  
 > **Grok Build added by reckless using Grok (xAI) — no manual coding by reckless.**  
 > See [../ATTRIBUTION.md](../ATTRIBUTION.md).
 

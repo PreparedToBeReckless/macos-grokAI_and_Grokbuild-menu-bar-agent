@@ -5,6 +5,7 @@ ORIGINAL PROJECT (please credit)
   MIT License — see LICENSE in the repository
 
 THIS FORK
+  Repository: https://github.com/PreparedToBeReckless/macos-grokAI_and_Grokbuild-menuebar-agent
   Maintained by: reckless
   Modifications: made using Grok (xAI assistant)
   reckless did not write application code manually.

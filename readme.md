@@ -13,7 +13,7 @@
 > **Full details:** [ATTRIBUTION.md](ATTRIBUTION.md)
 
 <p align="center">
-  <h1 align="center"><code>macos-grok-overlay</code> (reckless fork)</h1>
+  <h1 align="center"><code>macos-grokAI_and_Grokbuild-menuebar-agent</code></h1>
 </p>
 
 <p align="center">
@@ -29,10 +29,10 @@ A simple macOS overlay application for pinning <code>grok.com</code> to a dedica
 
   **Use the release DMG for this fork** — it includes **Grok Overlay** and **Grok Build**.
 
-**Download:** [Grok-Overlay-0.0.51.dmg](https://github.com/PreparedToBeReckless/macos-grok-overlay/releases/latest)  
+**Download:** [Grok-Overlay-0.0.51.dmg](https://github.com/PreparedToBeReckless/macos-grokAI_and_Grokbuild-menuebar-agent/releases/latest)  
 Open the DMG and drag both apps to Applications.
 
-[![DMG Installer](images/dmg-installer-preview.png)](https://github.com/PreparedToBeReckless/macos-grok-overlay/releases/latest)
+[![DMG Installer](images/dmg-installer-preview.png)](https://github.com/PreparedToBeReckless/macos-grokAI_and_Grokbuild-menuebar-agent/releases/latest)
 
 **Compatibility:** Release builds target `arm64` (Apple Silicon). Intel Macs can try building from source with `PY2APP_ARCH=x86_64 zsh build-dmg.sh`.
 
@@ -42,7 +42,7 @@ Open the DMG and drag both apps to Applications.
   To install **this fork** from source via pip (Python/CLI only — no `.app` bundles):
 
 ```bash
-python3 -m pip install "git+https://github.com/PreparedToBeReckless/macos-grok-overlay.git"
+python3 -m pip install "git+https://github.com/PreparedToBeReckless/macos-grokAI_and_Grokbuild-menuebar-agent.git"
 ```
 
   After a DMG or pip install, you can enable autolaunch from Terminal with:
