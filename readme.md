@@ -21,21 +21,27 @@ A simple macOS overlay application for pinning <code>grok.com</code> to a dedica
 ![Launcher Sample](images/macos-grok-overlay.jpeg)
 
 
-## Installation:
+## Installation (this fork)
 
-  The easiest approach is to download and execute the DMG installer (by clicking the image below) to place the program into your Applications folder.
+  **Use the release DMG for this fork** — it includes **Grok Overlay** and **Grok Build**.
 
-**Compatibility:** The DMG launcher is built as a universal binary for `arm64` + `x86_64` (thanks to [`sumitduster-kiuzan`](https://github.com/tchlux/macos-grok-overlay/pull/22)!), so it should run on both modern M-series laptops and older Intel-based Macs (2015/2017 era) provided they are on a supported version of macOS. When creating your own build you can force a specific target by exporting `PY2APP_ARCH` (e.g., `PY2APP_ARCH=x86_64 ./dmg-builder/build.sh`).
+**Download:** [Grok-Overlay-0.0.43.dmg](https://github.com/PreparedToBeReckless/macos-grok-overlay-reckless-fork/releases/latest)  
+Open the DMG and drag both apps to Applications.
 
-[![DMG Installer](images/dmg-installer-preview.png)](https://github.com/tchlux/macos-grok-overlay/releases/download/0.0.19/macos-grok-overlay.dmg)
+[![DMG Installer](images/dmg-installer-preview.png)](https://github.com/PreparedToBeReckless/macos-grok-overlay-reckless-fork/releases/latest)
 
-  Otherwise, you can install the latest stable release from a Terminal with:
+**Compatibility:** Release builds target `arm64` (Apple Silicon). Intel Macs can try building from source with `PY2APP_ARCH=x86_64 zsh build-dmg.sh`.
+
+> **Do not use** `pip install macos-grok-overlay` **for this fork.**  
+> That installs the **original** [upstream package on PyPI](https://pypi.org/project/macos-grok-overlay/) by Thomas Lux — not Grok Build or any changes here.
+
+  To install **this fork** from source via pip (Python/CLI only — no `.app` bundles):
 
 ```bash
-python3 -m pip install macos-grok-overlay
+python3 -m pip install "git+https://github.com/PreparedToBeReckless/macos-grok-overlay-reckless-fork.git"
 ```
 
-  Once you've installed the package, you can enable it to be automatically launched at startup with:
+  After a DMG or pip install, you can enable autolaunch from Terminal with:
 
 ```bash
 macos-grok-overlay --install-startup

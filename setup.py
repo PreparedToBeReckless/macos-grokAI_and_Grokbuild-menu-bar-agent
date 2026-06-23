@@ -24,6 +24,7 @@ def read(f_name, empty_lines=False):
 source_page = "grok"
 package_name = f"macos-{source_page}-overlay"
 package_about = os.path.join(os.path.dirname(os.path.abspath(__file__)), package_name.replace("-","_"), "about")
+FORK_GITHUB_REPO = "PreparedToBeReckless/macos-grok-overlay-reckless-fork"
 
 
 if __name__ == "__main__":
@@ -59,10 +60,8 @@ if __name__ == "__main__":
             include_package_data=True,
             install_requires=requirements,
             version=version,
-            url = 'https://github.com/{git_username}/{package}'.format(
-                git_username=git_username, package=package),
-            download_url = 'https://github.com/{git_username}/{package}/archive/{version}.tar.gz'.format(
-                git_username=git_username, package=package, version=version),
+            url=f"https://github.com/{FORK_GITHUB_REPO}",
+            download_url=f"https://github.com/{FORK_GITHUB_REPO}/archive/{version}.tar.gz",
             description = description,
             # scripts=[os.path.join(package,"setup.py")],
             keywords = keywords,
