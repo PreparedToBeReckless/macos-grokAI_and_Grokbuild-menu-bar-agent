@@ -24,7 +24,7 @@ def read(f_name, empty_lines=False):
 source_page = "grok"
 package_name = f"macos-{source_page}-overlay"
 package_about = os.path.join(os.path.dirname(os.path.abspath(__file__)), package_name.replace("-","_"), "about")
-FORK_GITHUB_REPO = "PreparedToBeReckless/macos-grokAI_and_Grokbuild-menuebar-agent"
+FORK_GITHUB_REPO = "PreparedToBeReckless/macos-grokAI_and_Grokbuild-menu-bar-agent"
 
 
 if __name__ == "__main__":

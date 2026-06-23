@@ -11,7 +11,7 @@ def attribution_text():
             "Fork of macos-grok-overlay by Thomas C.H. Lux (tchlux).\n"
             "https://github.com/tchlux/macos-grok-overlay\n\n"
             "This fork:\n"
-            "https://github.com/PreparedToBeReckless/macos-grokAI_and_Grokbuild-menuebar-agent\n\n"
+            "https://github.com/PreparedToBeReckless/macos-grokAI_and_Grokbuild-menu-bar-agent\n\n"
             "Modified by reckless using Grok (xAI). No manual coding by reckless.\n"
             "See ATTRIBUTION.md"
         )

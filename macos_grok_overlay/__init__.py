@@ -16,7 +16,7 @@ with open(os.path.join(ABOUT_DIR, "author.txt")) as f:
 
 __upstream__ = "https://github.com/tchlux/macos-grok-overlay"
 __upstream_author__ = "Thomas C.H. Lux (tchlux)"
-__fork__ = "https://github.com/PreparedToBeReckless/macos-grokAI_and_Grokbuild-menuebar-agent"
+__fork__ = "https://github.com/PreparedToBeReckless/macos-grokAI_and_Grokbuild-menu-bar-agent"
 __fork_maintainer__ = "reckless"
 __fork_method__ = "Modified using Grok (xAI); no manual coding by reckless."
 

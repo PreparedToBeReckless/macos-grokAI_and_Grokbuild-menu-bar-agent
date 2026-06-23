@@ -4,7 +4,7 @@
 
 This repository is a **fork** of **[macos-grok-overlay](https://github.com/tchlux/macos-grok-overlay)** by **Thomas C.H. Lux** ([@tchlux](https://github.com/tchlux)).
 
-- **This fork:** https://github.com/PreparedToBeReckless/macos-grokAI_and_Grokbuild-menuebar-agent  
+- **This fork:** https://github.com/PreparedToBeReckless/macos-grokAI_and_Grokbuild-menu-bar-agent  
 - **Upstream:** https://github.com/tchlux/macos-grok-overlay
 - **Original license:** MIT (see [LICENSE](LICENSE))  
 - **Original author:** Thomas C.H. Lux — `thomas.ch.lux@gmail.com`
@@ -19,7 +19,7 @@ Most of the core overlay architecture, pyobjc/WebKit integration, and original d
 |---|---|
 | **Fork maintainer** | **reckless** |
 | **How it was built** | **reckless used [Grok](https://grok.com) (xAI) to modify the project.** Prompts and review only — **reckless did not write application code manually.** |
-| **Current version** | 0.0.51 (see `macos_grok_overlay/about/version.txt`) |
+| **Current version** | 0.0.52 (see `macos_grok_overlay/about/version.txt`) |
 
 Major additions in this fork (via Grok-assisted sessions):
 
@@ -46,6 +46,6 @@ This is an **unofficial** community fork. It is **not** a product of xAI or Thom
 
 ```
 Based on macos-grok-overlay by Thomas C.H. Lux (https://github.com/tchlux/macos-grok-overlay).
-Fork: https://github.com/PreparedToBeReckless/macos-grokAI_and_Grokbuild-menuebar-agent
+Fork: https://github.com/PreparedToBeReckless/macos-grokAI_and_Grokbuild-menu-bar-agent
 Maintained by reckless; modifications made using Grok (xAI) — no manual coding by reckless.
 ```
