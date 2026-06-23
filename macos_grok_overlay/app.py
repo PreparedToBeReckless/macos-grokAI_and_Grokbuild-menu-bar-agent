@@ -58,11 +58,21 @@ from AppKit import (
 from AVFoundation import AVCaptureDevice, AVMediaTypeAudio
 from Foundation import NSDate, NSURL, NSURLRequest
 from WebKit import (
+    WKNavigationActionPolicyAllow,
+    WKNavigationActionPolicyCancel,
+    WKNavigationTypeLinkActivated,
     WKUserScript,
     WKUserScriptInjectionTimeAtDocumentEnd,
     WKWebView,
     WKWebViewConfiguration,
     WKWebsiteDataStore,
+)
+
+IN_APP_POPUP_HOST_SUFFIXES = (
+    "grok.com",
+    "x.ai",
+    "x.com",
+    "twitter.com",
 )
 
 # Local libraries
@@ -577,6 +587,52 @@ class AppDelegate(NSObject):
                 if hasattr(self, "content_view") and self.content_view is not None:
                     self.content_view.layer().setBackgroundColor_(color.CGColor())
 
+    def _normalized_url_host(self, url):
+        if url is None:
+            return ""
+        host = (url.host() or "").lower()
+        if host.startswith("www."):
+            return host[4:]
+        return host
+
+    def _host_matches_suffixes(self, host, suffixes):
+        for suffix in suffixes:
+            if host == suffix or host.endswith("." + suffix):
+                return True
+        return False
+
+    def _should_keep_navigation_in_app(self, url):
+        host = self._normalized_url_host(url)
+        return self._host_matches_suffixes(host, IN_APP_POPUP_HOST_SUFFIXES)
+
+    def _open_in_default_browser(self, url):
+        if url is None:
+            return False
+        return NSWorkspace.sharedWorkspace().openURL_(url)
+
+    def webView_decidePolicyForNavigationAction_decisionHandler_(
+        self,
+        web_view,
+        navigation_action,
+        decision_handler,
+    ):
+        request_url = navigation_action.request().URL()
+
+        if navigation_action.targetFrame() is None:
+            decision_handler(WKNavigationActionPolicyAllow)
+            return
+
+        if navigation_action.navigationType() != WKNavigationTypeLinkActivated:
+            decision_handler(WKNavigationActionPolicyAllow)
+            return
+
+        if self._should_keep_navigation_in_app(request_url):
+            decision_handler(WKNavigationActionPolicyAllow)
+            return
+
+        self._open_in_default_browser(request_url)
+        decision_handler(WKNavigationActionPolicyCancel)
+
     def webView_createWebViewWithConfiguration_forNavigationAction_windowFeatures_(
         self,
         web_view,
@@ -585,6 +641,11 @@ class AppDelegate(NSObject):
         window_features,
     ):
         if navigation_action.targetFrame() is not None:
+            return None
+
+        request_url = navigation_action.request().URL()
+        if not self._should_keep_navigation_in_app(request_url):
+            self._open_in_default_browser(request_url)
             return None
 
         popup_webview = WKWebView.alloc().initWithFrame_configuration_(
