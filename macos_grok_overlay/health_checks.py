@@ -41,6 +41,22 @@ def get_system_info():
     )
     return info
 
+def show_startup_alert(message):
+    try:
+        from AppKit import NSAlert, NSAlertStyleCritical, NSApplication, NSApplicationActivationPolicyRegular
+
+        app = NSApplication.sharedApplication()
+        app.setActivationPolicy_(NSApplicationActivationPolicyRegular)
+        app.activateIgnoringOtherApps_(True)
+        alert = NSAlert.alloc().init()
+        alert.setMessageText_("Grok Overlay")
+        alert.setInformativeText_(message)
+        alert.setAlertStyle_(NSAlertStyleCritical)
+        alert.runModal()
+    except Exception:
+        pass
+
+
 # Reads and updates the crash counter; exits if a crash loop is detected.
 def check_crash_loop():
     current_time = time.time()
@@ -72,13 +88,24 @@ def check_crash_loop():
 
     # If the count exceeds the threshold, abort further restarts.
     if count > CRASH_THRESHOLD:
-        print("ERROR: Crash loop detected (more than {} crashes within {} seconds). Crash counter file (for reference) at:\n  {}\n\nAborting further restarts. To resume attempts to launch, delete the counter file with:\n  rm {}\n\nError log (most recent) at:\n  {}".format(
-            CRASH_THRESHOLD,
-            CRASH_TIME_WINDOW,
-            CRASH_COUNTER_FILE,
-            CRASH_COUNTER_FILE,
-            LOG_PATH
-        ))
+        message = (
+            f"Grok Overlay stopped launching after repeated crashes.\n\n"
+            f"Delete this file and try again:\n{CRASH_COUNTER_FILE}\n\n"
+            f"Error log:\n{LOG_PATH}"
+        )
+        print(
+            "ERROR: Crash loop detected (more than {} crashes within {} seconds). "
+            "Crash counter file (for reference) at:\n  {}\n\n"
+            "Aborting further restarts. To resume attempts to launch, delete the counter file with:\n"
+            "  rm {}\n\nError log (most recent) at:\n  {}".format(
+                CRASH_THRESHOLD,
+                CRASH_TIME_WINDOW,
+                CRASH_COUNTER_FILE,
+                CRASH_COUNTER_FILE,
+                LOG_PATH,
+            )
+        )
+        show_startup_alert(message)
         sys.exit(1)
 
 # Resets the crash counter after a successful run.

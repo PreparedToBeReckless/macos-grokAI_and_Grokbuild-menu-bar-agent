@@ -69,7 +69,7 @@ rm -rf env dist build *.egg-info
 python3 -m venv env
 source env/bin/activate
 python3 -m pip install --upgrade pip
-python3 -m pip install setuptools==70.3.0 py2app pyobjc
+python3 -m pip install setuptools==70.3.0 py2app -r ../macos_grok_overlay/about/requirements.txt
 # Get the build directory name (containing this file).
 #  - ${0} → The path to the script.
 #  - :a → Resolves to an absolute path.
@@ -85,12 +85,14 @@ popd
 # Deactivate the python building environment
 deactivate
 
+ENTITLEMENTS="../macos_grok_overlay/entitlements.plist"
+
 # Codesign all the '.so' files within the app
-find dist/$APP_NAME.app -type f -name "*.so" -exec codesign --deep --force --verify --verbose --options runtime --timestamp --sign "$SIGNATURE" {} \;
+find dist/$APP_NAME.app -type f -name "*.so" -exec codesign --deep --force --verify --verbose --options runtime --timestamp --entitlements "$ENTITLEMENTS" --sign "$SIGNATURE" {} \;
 # Codesign all the '.dylib' files within the app
-find dist/$APP_NAME.app -type f -name "*.dylib" -exec codesign --deep --force --verify --verbose --options runtime --timestamp --sign "$SIGNATURE" {} \;
+find dist/$APP_NAME.app -type f -name "*.dylib" -exec codesign --deep --force --verify --verbose --options runtime --timestamp --entitlements "$ENTITLEMENTS" --sign "$SIGNATURE" {} \;
 # Codesign the app itself
-codesign --deep --force --verify --verbose --options runtime --timestamp --sign "$SIGNATURE" dist/$APP_NAME.app
+codesign --deep --force --verify --verbose --options runtime --timestamp --entitlements "$ENTITLEMENTS" --sign "$SIGNATURE" dist/$APP_NAME.app
 # Create a ZIP for notary submission
 ditto -c -k --keepParent dist/$APP_NAME.app $APP_NAME.zip
 # Submit for notarization

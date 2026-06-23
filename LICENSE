@@ -19,3 +19,20 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+## Derivative work notice (this fork)
+
+This repository is a fork of **macos-grok-overlay** by **Thomas C.H. Lux**:
+https://github.com/tchlux/macos-grok-overlay
+
+The MIT License above applies to the original work and remains in effect for
+this derivative work.
+
+**Fork maintainer:** reckless
+
+**Modification method:** Changes in this fork were made by reckless using
+**Grok** (xAI assistant). reckless did not write application code manually.
+
+See **ATTRIBUTION.md** for full credit and dependency notices.

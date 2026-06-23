@@ -44,7 +44,12 @@ if __name__ == "__main__":
             name=package,
             packages=[package],
             package_data={
-                package: [f"logo/logo_white.png", f"logo/logo_black.png"],
+                package: [
+                    f"logo/logo_white.png",
+                    f"logo/logo_black.png",
+                    "entitlements.plist",
+                    "about/attribution.txt",
+                ],
             },
             entry_points={
                 "console_scripts": [
@@ -66,20 +71,36 @@ if __name__ == "__main__":
             classifiers=classifiers
         )
     elif 'py2app' in sys.argv:
+        app_display_name = "Grok Overlay"
         setup(
             app=[f'run.py'],  # Entry point to your application
             options={
                 'py2app': {
                     'iconfile': f'{package}/logo/icon.icns',  # Path to your app icon
                     'plist': {
-                        'CFBundleName': package_name,
+                        'CFBundleName': app_display_name,
+                        'CFBundleDisplayName': app_display_name,
+                        'CFBundleShortVersionString': version,
+                        'CFBundleVersion': version,
                         'CFBundleIdentifier': f'com.github-{git_username}.macos{source_page}overlay',  # Unique identifier
-                        'LSUIElement': True,  # Hide from Dock and Cmd+Tab
+                        'LSUIElement': False,
+                        'NSMainNibFile': '',
                         'NSMicrophoneUsageDescription': 'Microphone access is needed for voice mode features.',
-                        'NSInputMonitoringUsageDescription': 'Needed to listen for your chosen keyboard trigger to show/hide the overlay.',
+                        'NSHumanReadableCopyright': (
+                            'Fork of macos-grok-overlay by Thomas C.H. Lux (tchlux). '
+                            'Modified by reckless using Grok (xAI). See ATTRIBUTION.md.'
+                        ),
                         # 'NSAppTransportSecurity': {'NSAllowsArbitraryLoads': True}  # Allow HTTP and invalid HTTPS certificates for X login
                     },
-                    'includes': ['objc', 'AppKit', 'WebKit', 'Quartz', 'Foundation', 'ApplicationServices'],
+                    'includes': [
+                        'objc',
+                        'AppKit',
+                        'WebKit',
+                        'Quartz',
+                        'Foundation',
+                        'ApplicationServices',
+                        'AVFoundation',
+                    ],
                     'excludes': ['docutils', 'setuptools', 'pkg_resources', 'importlib_resources'],
                     'packages': [package],
                     'resources': [

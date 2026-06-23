@@ -1,0 +1,3 @@
+reckless
+Fork maintained using Grok (xAI) — no manual coding by reckless.
+See ATTRIBUTION.md and https://github.com/tchlux/macos-grok-overlay

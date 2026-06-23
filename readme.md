@@ -1,9 +1,21 @@
+> ## ⚠️ ATTRIBUTION — READ FIRST
+>
+> **This is a fork of [macos-grok-overlay](https://github.com/tchlux/macos-grok-overlay) by [Thomas C.H. Lux](https://github.com/tchlux) (MIT).**  
+> Please credit the **original upstream project and author** if you use or share this code.
+>
+> **Fork maintainer:** **reckless**  
+> **How this fork was made:** **reckless used [Grok](https://grok.com) (xAI) to modify the project — no manual coding by reckless.**  
+>
+> **Full details:** [ATTRIBUTION.md](ATTRIBUTION.md)
+
 <p align="center">
-  <h1 align="center"><code>macos-grok-overlay</code></h1>
+  <h1 align="center"><code>macos-grok-overlay</code> (reckless fork)</h1>
 </p>
 
 <p align="center">
 A simple macOS overlay application for pinning <code>grok.com</code> to a dedicated window and key command <code>option+space</code>.
+<br><br>
+<em>Fork of <a href="https://github.com/tchlux/macos-grok-overlay">tchlux/macos-grok-overlay</a> — modified by reckless via Grok (xAI).</em>
 </p>
 
 ![Launcher Sample](images/macos-grok-overlay.jpeg)
@@ -15,7 +27,7 @@ A simple macOS overlay application for pinning <code>grok.com</code> to a dedica
 
 **Compatibility:** The DMG launcher is built as a universal binary for `arm64` + `x86_64` (thanks to [`sumitduster-kiuzan`](https://github.com/tchlux/macos-grok-overlay/pull/22)!), so it should run on both modern M-series laptops and older Intel-based Macs (2015/2017 era) provided they are on a supported version of macOS. When creating your own build you can force a specific target by exporting `PY2APP_ARCH` (e.g., `PY2APP_ARCH=x86_64 ./dmg-builder/build.sh`).
 
-[![DMG Installer](images/dmg-installer-preview.png)](https://github.com/tchlux/macos-grok-overlay/releases/download/0.0.17/macos-grok-overlay.dmg)
+[![DMG Installer](images/dmg-installer-preview.png)](https://github.com/tchlux/macos-grok-overlay/releases/download/0.0.19/macos-grok-overlay.dmg)
 
   Otherwise, you can install the latest stable release from a Terminal with:
 
@@ -67,7 +79,31 @@ macos-grok-overlay --uninstall-startup
 
   This is a very thin `pyobjc` application written to contain a web view of the current production Grok website. Most of the logic contained in this small application is for stylistic purposes, making the overlay shaped correctly, resizeable, draggable, and able to be summoned anywhere easily with a single (modifiable) keyboard command. There's also a few steps needed to listen specifically for the `Option + Space` keyboard command, which requires Accessibility access to macOS.
 
+  **Grok Build** is a companion native app (Swift + SwiftTerm) that runs the Grok CLI `agent` in its own embedded terminal window — separate from Terminal.app. Install both apps from the DMG.
+
+
+## Building from source
+
+  Requires **Python 3.12** (Homebrew) and **Xcode Command Line Tools** (`swiftc`).
+
+```bash
+# Full DMG (Grok Overlay + Grok Build)
+zsh build-dmg.sh
+
+# Local test copy
+open test-install/Grok\ Overlay.app
+
+# Clean artifacts and old installers
+zsh clean.sh
+```
+
+  Output: `Grok-Overlay-<version>.dmg` and `Grok-Overlay-latest.dmg`.
+
 
 ## Final thoughts
 
-  This was a small fun weekend project, and is not a product of the xAI team nor is it formally affiliated with them. Please file issues and I'll be happy to adjust, but I also highly recommend you look at the source code yourself if you want to change something. It's a small and simple project that fits in less [than 10K tokens](http://gitingest.com/tchlux/macos-grok-overlay), Grok (or similar) could easily help you modify it for your own purposes.
+  The **original** [macos-grok-overlay](https://github.com/tchlux/macos-grok-overlay) was a small fun weekend project by Thomas Lux, and is not a product of the xAI team nor formally affiliated with them.
+
+  **This fork** is maintained by **reckless** and was modified entirely through **Grok (xAI)** — reckless did not write code manually. It is also unofficial and not affiliated with xAI or the upstream author unless merged upstream.
+
+  See **[ATTRIBUTION.md](ATTRIBUTION.md)** before redistributing or building on this work.

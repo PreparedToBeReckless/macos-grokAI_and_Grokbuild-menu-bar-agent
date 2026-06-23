@@ -1,11 +1,24 @@
+# Python
 *.pyc
 *.so
 *.egg-info
-*.dmg
-*.zip
-dist
-build
-env
+__pycache__/
+
+# Build outputs
+dist/
+build/
+env/
 config.sh
-__pycache__
+dmg-builder/build/
+dmg-builder/env/
+grok-build-native/build/
+grok-build-native/vendor/
+
+# Installers (publish via GitHub Releases, not the repo)
+*.dmg
+
+# Local test copies
+test-install/
+
+# macOS
 .DS_Store
